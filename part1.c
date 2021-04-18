@@ -1,16 +1,20 @@
-//
-// Part 1 - manipulating char lists
-//
-// Created by Tom Grozev.
-//
+/**
+ * Manipulating char lists
+ * Part 1 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * Reads an input word and returns the char list
+ *
+ * @return Inputted word
+ */
 char *read() {
-    // Reads an input word and returns the char list
-
-    // Allocates a max size of 20 bytes for the word
+    // Allocates a max size of 20 chars for the word
     char *word = malloc(20);
 
     printf("Please input a word: ");
@@ -19,29 +23,47 @@ char *read() {
     return word;
 }
 
+/**
+ * Gets the length of a string (char list)
+ *
+ * @param [in] word Char list to calculate length of
+ * @return The integer length of the input
+ */
 int strLength(char *word) {
-    // Gets the length of a string (char list)
-
     int length = 0;
+
+    // Loop over each character in word until at the end ('\0' character)
     for (char *c = word; *c != '\0'; c++) {
         length++;
     }
     return length;
 }
 
+/**
+ * Counts the occurrences of `character` in a char list
+ *
+ * @param [in] str The string to count in
+ * @param [in] character The character to count
+ * @return The integer number of occurrences of `character` in `str`
+ */
 int charCount(char *str, char character) {
-    // Counts the occurrences of `character` in a char list
-
     int count = 0;
+
+    // Loop over each character in word until at the end ('\0' character)
     for (char *c = str; *c != '\0'; c++) {
         if (*c == character) count++;
     }
     return count;
 }
 
+/**
+ * Counts the uppercase and lowercase characters in a char list
+ *
+ * @param [in] str The string to count on
+ * @param [out] uppercase Number of uppercase chars is written to this
+ * @param [out] lowercase Number of lowercase chars is written to this
+ */
 void setCaseNums(char *str, int *uppercase, int *lowercase) {
-    // Counts the uppercase and lowercase characters in a char list
-
     for (char *c = str; *c != '\0'; c++) {
         if (*c >= 'A' && *c <= 'Z') {
             // If uppercase
@@ -53,10 +75,16 @@ void setCaseNums(char *str, int *uppercase, int *lowercase) {
         // Otherwise don't count
     }
 }
-void changeCase(char *str, int mode, int *changed, int *same) {
-    // Change the case of a char list
-    // `mode` of 1 for uppercase and 0 for lowercase
 
+/**
+ * Change the case of a char list
+ *
+ * @param [in,out] str The char list to modify
+ * @param [in] mode 1 for convert to uppercase and 0 (or anything else) for lowercase
+ * @param [out] changed The number of characters that were changed is written to this
+ * @param [out] same The number of characters that were not changed is written to this
+ */
+void changeCase(char *str, int mode, int *changed, int *same) {
     for (char *c = str; *c != '\0'; c++) {
         if (*c >= 'A' && *c <= 'Z' && mode != 1) {
             // If uppercase and converting to lower
@@ -78,8 +106,13 @@ void changeCase(char *str, int mode, int *changed, int *same) {
     }
 }
 
-int runPart1() {
-    printf("*** Part 1 ***\n\n\n");
+/**
+ * Main testing function
+ *
+ * @return
+ */
+int main() {
+    printf("*** Part 1 ***\n\n");
 
     char *word = read();
     printf("First char is: %c \n", word[0]);
