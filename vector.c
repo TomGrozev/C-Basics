@@ -1,21 +1,33 @@
-//
-// Created by user on 4/16/21.
-//
+/**
+ * Implementing a vector in C
+ * Part 2 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include "vector.h"
 
+/**
+ * Create a new vector with two elements
+ *
+ * @param [out] vector The variable to create a new vector on
+ */
 void create(Vector *vector) {
-    // Create a new vector with two elements
-
     vector->size = 0;
     vector->capacity = 2;
     vector->list = malloc(vector->capacity * sizeof(int));
 }
 
+/**
+ * Prints the vector structure
+ *
+ * @param [in] vector The vector to print
+ */
 void printVector(Vector vector) {
-    // Prints the vector
 
+    printf("****************\n");
     printf("Size: %d \n", vector.size);
     printf("Capacity: %d \n", vector.capacity);
     printf("List: ");
@@ -25,12 +37,16 @@ void printVector(Vector vector) {
             printf(", ");
         }
     }
-    printf("\n");
+    printf("\n****************\n");
 }
 
+/**
+ * Adds an element to the end of the vector
+ *
+ * @param [in,out] vector The vector to add an element to
+ * @param [in] integer The integer to add
+ */
 void add(Vector *vector, int integer) {
-    // Adds an element to the end of the vector
-
     if (vector->size >= vector->capacity) {
         // If capacity needs to be increased
 
@@ -55,9 +71,13 @@ void add(Vector *vector, int integer) {
     vector->size++;
 }
 
+/**
+ * Removes all elements in the vector with value
+ *
+ * @param [in,out] vector The vector to remove values from
+ * @param [in] integer The integer value to remove
+ */
 void removeElements(Vector *vector, int integer) {
-    // Removes all elements in the vector with value
-
     int removed = 0;
     for (int i = 0; i < vector->size; ++i) {
         if (vector->list[i] == integer) {
@@ -71,9 +91,14 @@ void removeElements(Vector *vector, int integer) {
     vector->size -= removed;
 }
 
+/**
+ * Gets an element at an index
+ *
+ * @param [in] vector Vector to search
+ * @param [in] index Element index to check
+ * @return Integer value at index
+ */
 int elementAt(Vector *vector, int index) {
-    // Gets an element at an index
-
     if (index >= vector->size) {
         // If index is out of bounds exit with an error
         printf("Index %d out of bounds.", index);
@@ -83,9 +108,12 @@ int elementAt(Vector *vector, int index) {
     }
 }
 
+/**
+ * Trims vector capacity to vector size
+ *
+ * @param [in,out] vector The vector to trim
+ */
 void trimToSize(Vector *vector) {
-    // Trims vector capacity to vector size
-
     // Create new list of the vector size
     int *tmp = malloc(vector->size * sizeof(int));
     int tmpI = 0;

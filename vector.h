@@ -1,6 +1,9 @@
-//
-// Created by user on 4/16/21.
-//
+/**
+ * Implementing a vector in C
+ * Part 2 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
 
 #ifndef ASSIGNMENT1_VECTOR_H
 #define ASSIGNMENT1_VECTOR_H
