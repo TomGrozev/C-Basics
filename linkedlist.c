@@ -1,14 +1,21 @@
-//
-// Created by user on 4/16/21.
-//
+/**
+ * Linked List Implementation
+ * Part 3 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist.h"
 
+/**
+ * Creates a new node with data
+ *
+ * @param [in] data The integer data to create a node for
+ * @return A new Node with `data` value and no next node
+ */
 Node *newNode(int data) {
-    // Creates a new node with data
-
     Node *node = malloc(sizeof(Node));
     if (node == NULL) {
         return NULL;
@@ -18,9 +25,12 @@ Node *newNode(int data) {
     return node;
 }
 
+/**
+ * Creates an empty list with no head
+ *
+ * @return An empty List
+ */
 List *create() {
-    // Creates an empty list with no head
-
     List *list = malloc(sizeof(List));
     if (list == NULL) {
         return NULL;
@@ -29,15 +39,23 @@ List *create() {
     return list;
 }
 
+/**
+ * Checks if a list is empty
+ *
+ * @param [in] list The list to check
+ * @return True if is empty or false if not
+ */
 int isEmpty(List *list) {
-    // Checks if a list is empty
-
     return list->head == NULL;
 }
 
+/**
+ * Insert a node at the start of the list
+ *
+ * @param [in,out] list The list to insert the data in
+ * @param [in] data The data to insert
+ */
 void insertAtHead(List *list, int data) {
-    // Insert a node at the head
-
     Node *newHead = newNode(data);
     if (isEmpty(list)) {
         // If empty set head to head
@@ -51,9 +69,12 @@ void insertAtHead(List *list, int data) {
     }
 }
 
+/**
+ * Print out the values of the list
+ *
+ * @param [in] list The list to print
+ */
 void traverse(List *list) {
-    // Prints the list's values
-
     if (isEmpty(list)) {
         printf("List is empty");
     } else {
@@ -72,9 +93,14 @@ void traverse(List *list) {
     }
     printf("\n");
 }
-void insertAtTail(List *list, int data) {
-    // Insert a node at the end of the list
 
+/**
+ * Insert a node at the end of the list
+ *
+ * @param [in,out] list The list to insert the data in
+ * @param [in] data The data to insert
+ */
+void insertAtTail(List *list, int data) {
     if (isEmpty(list)) {
         list->head = newNode(data);
     } else {
@@ -90,9 +116,12 @@ void insertAtTail(List *list, int data) {
     }
 }
 
+/**
+ * Deletes the head node
+ *
+ * @param [in,out] list The list to delete the head Node on
+ */
 void deleteHead(List *list) {
-    // Deletes the head node
-
     if (!isEmpty(list)) {
         // Create temp reference to head
         Node *tmp = list->head;
@@ -106,9 +135,12 @@ void deleteHead(List *list) {
     }
 }
 
+/**
+ * Deletes the tail node
+ *
+ * @param [in,out] list The list to delete the tail Node on
+ */
 void deleteTail(List *list) {
-    // Deletes the tail node
-
     if (!isEmpty(list)) {
         Node *current = list->head;
         Node *previous;

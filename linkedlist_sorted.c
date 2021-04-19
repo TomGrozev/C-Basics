@@ -1,14 +1,21 @@
-//
-// Created by user on 4/16/21.
-//
+/**
+ * Sorted Linked List Implementation
+ * Part 3 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "linkedlist_sorted.h"
 
+/**
+ * Creates a new node with data
+ *
+ * @param [in] data The integer data to create a node for
+ * @return A new Node with `data` value and no next node
+ */
 Node *newNode(int data) {
-    // Creates a new node with data
-
     Node *node = malloc(sizeof(Node));
     if (node == NULL) {
         return NULL;
@@ -18,9 +25,12 @@ Node *newNode(int data) {
     return node;
 }
 
+/**
+ * Creates an empty list with no head
+ *
+ * @return An empty List
+ */
 List *create() {
-    // Creates an empty list with no head
-
     List *list = malloc(sizeof(List));
     if (list == NULL) {
         return NULL;
@@ -29,9 +39,13 @@ List *create() {
     return list;
 }
 
+/**
+ * Checks if a list is empty
+ *
+ * @param [in] list The list to check
+ * @return True if is empty or false if not
+ */
 int isEmpty(List *list) {
-    // Checks if a list is empty
-
     return list->head == NULL;
 }
 
@@ -69,9 +83,12 @@ void insert(List *list, int data) {
     }
 }
 
+/**
+ * Print out the values of the list
+ *
+ * @param [in] list The list to print
+ */
 void traverse(List *list) {
-    // Prints the list's values
-
     if (isEmpty(list)) {
         printf("List is empty");
     } else {
@@ -91,13 +108,22 @@ void traverse(List *list) {
     printf("\n");
 }
 
+/**
+ * Deletes all instances of `data` from list
+ *
+ * @param [in,out] list The list to delete elements in
+ * @param [in] data The element value to delete
+ */
 void delete(List *list, int data) {
     if (!isEmpty(list)) {
         Node *current = list->head;
         Node *previous;
-        // Iterate until a node is found that is greater than or equal to the data
+
+        // Iterate over all nodes
         while (current != NULL) {
             Node *next = current->nextNode;
+
+            // If it matches skip the node and free it from memory
             if (current->data == data) {
                 previous->nextNode = next;
                 free(current);

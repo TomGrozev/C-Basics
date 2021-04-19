@@ -1,6 +1,9 @@
-//
-// Created by user on 4/16/21.
-//
+/**
+ * Sorted Linked List Implementation
+ * Part 3 - Assignment 1 - CLA
+ *
+ * Created by Tom Grozev.
+ */
 
 #ifndef ASSIGNMENT1_LINKEDLIST_SORTED_H
 #define ASSIGNMENT1_LINKEDLIST_SORTED_H
