@@ -145,3 +145,36 @@ void delete(List *list, int data) {
         }
     }
 }
+
+int main() {
+    List *list = create();
+    if (isEmpty(list)) {
+        printf("List is empty\n");
+    }
+
+    printf("\nAdding elements in order (3, 4, 1, 2): \n");
+    insert(list, 3);
+    insert(list, 4);
+    insert(list, 1);
+    insert(list, 2);
+    traverse(list);
+
+    printf("\nAdding elements in order (5, 2): \n");
+    insert(list, 5);
+    insert(list, 2);
+    traverse(list);
+
+    printf("\nDeleting all 2 values: \n");
+    delete(list, 2);
+    traverse(list);
+
+    printf("\nDeleting all 5 values: \n");
+    delete(list, 5);
+    traverse(list);
+
+    printf("\nDeleting all 0 values: \n");
+    delete(list, 0);
+    traverse(list);
+
+    return 0;
+}

@@ -168,3 +168,36 @@ void deleteTail(List *list) {
         free(current);
     }
 }
+
+int main() {
+    List *list = create();
+    if (isEmpty(list)) {
+        printf("List is empty\n");
+    }
+
+    printf("\nInserting to head in order (4, 3, 2, 1): \n");
+    insertAtHead(list, 4);
+    insertAtHead(list, 3);
+    insertAtHead(list, 2);
+    insertAtHead(list, 1);
+    traverse(list);
+
+    printf("\nInserting 5 at head and 0 at tail: \n");
+    insertAtTail(list, 0);
+    insertAtHead(list, 5);
+    traverse(list);
+
+    printf("\nDeleting one at tail: \n");
+    deleteTail(list);
+    traverse(list);
+
+    printf("\nDeleting one at head: \n");
+    deleteHead(list);
+    traverse(list);
+
+    printf("\nDeleting one at tail: \n");
+    deleteTail(list);
+    traverse(list);
+
+    return 0;
+}
