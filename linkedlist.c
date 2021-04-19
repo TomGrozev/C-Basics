@@ -7,7 +7,17 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "linkedlist.h"
+
+struct node {
+    int data;
+    struct node *nextNode;
+};
+typedef struct node Node;
+
+struct list {
+    Node *head;
+};
+typedef struct list List;
 
 /**
  * Creates a new node with data
