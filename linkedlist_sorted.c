@@ -51,16 +51,21 @@ void insert(List *list, int data) {
         // Otherwise find location to add new data
 
         Node *current = list->head;
-        Node *previous;
+        Node *previous = NULL;
+
         // Iterate until a node is found that is greater than or equal to the data
-        while (current->data < data) {
+        while (current != NULL && current->data < data) {
             previous = current;
             current = current->nextNode;
         }
 
         // Set the data node to point to the bigger node and the smaller to point to the data node
         dataNode->nextNode = current;
-        previous->nextNode = dataNode;
+        if (previous == NULL) {
+            list->head = dataNode;
+        } else {
+            previous->nextNode = dataNode;
+        }
     }
 }
 
@@ -86,39 +91,21 @@ void traverse(List *list) {
     printf("\n");
 }
 
-void deleteHead(List *list) {
-    // Deletes the head node
-
-    if (!isEmpty(list)) {
-        // Create temp reference to head
-        Node *tmp = list->head;
-
-        // Set new head
-        Node *newHead = list->head->nextNode;
-        list->head = newHead;
-
-        // Clear old head from memory
-        free(tmp);
-    }
-}
-
-void deleteTail(List *list) {
-    // Deletes the tail node
-
+void delete(List *list, int data) {
     if (!isEmpty(list)) {
         Node *current = list->head;
         Node *previous;
+        // Iterate until a node is found that is greater than or equal to the data
+        while (current != NULL) {
+            Node *next = current->nextNode;
+            if (current->data == data) {
+                previous->nextNode = next;
+                free(current);
+            } else {
+                previous = current;
+            }
 
-        // Get the last node and node before last
-        while (current->nextNode != NULL) {
-            previous = current;
-            current = current->nextNode;
+            current = next;
         }
-
-        // Remove last node from the second last (making it last)
-        previous->nextNode = NULL;
-
-        // Clear old tail from memory
-        free(current);
     }
 }

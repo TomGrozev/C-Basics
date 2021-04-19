@@ -20,7 +20,6 @@ List *create();
 int isEmpty(List *list);
 void insert(List *list, int data);
 void traverse(List *list);
-void deleteHead(List *list);
-void deleteTail(List *list);
+void delete(List *list, int data);
 
 #endif //ASSIGNMENT1_LINKEDLIST_SORTED_H
